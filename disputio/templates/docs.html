@@ -4,7 +4,7 @@
 {% block content %}
 {% for id in ids %}
 	<div class="id-box">
-	<a href="/disputio/id/{{id}}">{{id}}</a>
+	<a href="/disputio/id/{{id.0}}">{{id.1}}</a>
 	</div>
 {% endfor %}
 {% endblock %}
