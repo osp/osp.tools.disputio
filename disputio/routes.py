@@ -3,11 +3,12 @@
 import bobo
 import webob
 import jinja2
+import re
 
 import pymongo as mongo
 from pymongo import objectid
 
-
+#repat = re.compile(r'^((?:(?:[^?+*{}()[\]\\|]+|\\.|\[(?:\^?\\.|\^[^\\]|[^\\^])(?:[^\]\\]+|\\.)*\]|\((?:\?[:=!]|\?<[=!]|\?>)?(?1)??\)|\(\?(?:R|[+-]?\d+)\))(?:(?:[?+*]|\{\d+(?:,\d*)?\})[?+]?)?|\|)*)$')
 
     
     
@@ -68,12 +69,35 @@ def docs():
 	template = template_env.get_template('docs.html')
 	return template.render({'ids':ids})
 
+
 @bobo.query('/:key/:value')
 def bykey(key, value):
 	col = get_collection()
 	pat = {key:value}
+	
 	if key == 'id' or key == '_id':
 		pat = {'_id':objectid.ObjectId(value)}
+	
+	res = col.find(pat)
+	keys_ = {}
+	for r in res:
+		for k in r.iterkeys():
+			keys_[k] = 1
+			
+	keys = keys_.keys()
+	resource = []
+	res.rewind()
+	for r in res:
+		resource.append(r_to_doc(r, keys))
+		
+	template = template_env.get_template('find.html')
+	return template.render({'key':key, 'value':value, 'keys':keys, 'resource':resource})
+
+@bobo.query('/regex/:key/:value')
+def byregex(key, value):
+	col = get_collection()
+	pat = {key:{'$regex':value}}
+	
 	res = col.find(pat)
 	keys_ = {}
 	for r in res:
