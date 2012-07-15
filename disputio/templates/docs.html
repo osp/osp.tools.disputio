@@ -2,9 +2,14 @@
 {% block title %}Documents{% endblock %}
 
 {% block content %}
-{% for id in ids %}
+{% for item in ids %}
 	<div class="id-box">
-	<a href="/disputio/id/{{id.0}}">{{id.1}}</a>
+	<a href="/disputio/id/{{item['id']}}">{{item['time']}}</a> 
+	<div class="keys">
+	{% for key in item['keys'] %}
+	<a href="/disputio/value_of/{{item['id']}}/{{key}}">{{key}}</a>
+	{% endfor %}
+	</div>
 	</div>
 {% endfor %}
 {% endblock %}

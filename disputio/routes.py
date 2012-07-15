@@ -64,12 +64,29 @@ def docs():
 	res = col.find()
 	ids = []
 	for r in res:
-		ids.append((str(r.get('_id')), r.get('_id').generation_time.isoformat()))
+		d = {}
+		d['id'] = str(r.get('_id'))
+		d['time'] = r.get('_id').generation_time.isoformat()
+		d['keys'] = r.keys()
+		ids.append(d)
 		
 	template = template_env.get_template('docs.html')
 	return template.render({'ids':ids})
 
 
+@bobo.query('/value_of/:oid/:key')
+def value_of(oid, key):
+	col = get_collection()
+	res = col.find({'_id':objectid.ObjectId(oid)})
+	if res.count() == 0:
+		return ''
+	
+	doc = res[0]
+	if doc.has_key(key):
+		return unicode(doc.get(key))
+		
+	return ''
+	
 @bobo.query('/:key/:value')
 def bykey(key, value):
 	col = get_collection()
@@ -115,3 +132,5 @@ def byregex(key, value):
 	template = template_env.get_template('find.html')
 	return template.render({'key':key, 'value':value, 'keys':keys, 'resource':resource})
 
+
+	

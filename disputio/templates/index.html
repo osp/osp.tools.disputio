@@ -7,6 +7,7 @@ $(document).ready(function()
 {
 	var iw = $('#input-wrapper');
 	var keyCount = 0;
+	
 	$('#add-key').on('click', function(e)
 	{
 		var key = $('<input type="text" />')
@@ -24,6 +25,10 @@ $(document).ready(function()
 	$('#add-doc').on('click', function(e){
 		$('#root').submit();
 	});
+	
+	$('#nav-box').load('/disputio/docs');
+	
+	
 });
 
 {% endblock %}
@@ -37,13 +42,13 @@ $(document).ready(function()
 
 <div id="input-wrapper">
 
-</div">
+</div>
 <div class="button" id="add-key">Ajouter un champ de note, une manière de décrire le document, une autre manière peut-être pour le caractériser.</div>
 <div class="button" id="add-doc">Ajouter le contenu de cet écran au disputio.</div>
 
 </form>
 
-<div class="nav">
+<div id="nav-box">
 <a>Voir tous les documents</a>
 </div>
 
