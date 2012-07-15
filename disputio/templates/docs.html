@@ -1,7 +1,4 @@
-{% extends "base.html" %}
-{% block title %}Documents{% endblock %}
 
-{% block content %}
 {% for item in ids %}
 	<div class="id-box">
 	<a href="/disputio/id/{{item['id']}}">{{item['time']}}</a> 
@@ -12,4 +9,3 @@
 	</div>
 	</div>
 {% endfor %}
-{% endblock %}
