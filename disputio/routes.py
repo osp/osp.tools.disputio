@@ -63,7 +63,7 @@ def docs():
 	res = col.find()
 	ids = []
 	for r in res:
-		ids.append(str(r.get('_id')))
+		ids.append((str(r.get('_id')), r.get('_id').generation_time.isoformat()))
 		
 	template = template_env.get_template('docs.html')
 	return template.render({'ids':ids})
