@@ -5,34 +5,23 @@
 
 $(document).ready(function()
 {
-	var iw = $('#input-wrapper');
-	var keyCount = 0;
-	
-	$('#command-box').hide();
 	
 	function new_part(e){
-		var key = $('<input type="text" />')
-		var value = $('<textarea name="xxxx"></textarea>')
-		var box = $('<p></p>')
-		key.on('change', function(e){
-			value.attr('name', key.val());
-		});
+		var nki = $('#new-key-input');
+		var keyval = nki.val();
+		nki.val('');
 		
-		box.append(key);
-		box.append(value);
-		iw.append(box);
+		var key = $('<div class="part-key">'+keyval+'</div>')
+		var value = $('<div class="value-box"><textarea class="part-value" name="'+keyval+'"></textarea></div>')
+		
+		$('#new-key-box').append(key);
+		$('#edit-wrapper').append(value);
 	}
 	
-	$('#start-doc').on('click', function(e){
-		var that = $(this);
-		that.hide();
-		$('#command-box').show();
-		new_part();
-	});
 	
-	$('#add-key').on('click', new_part);
+	$('#new-key-submit').on('click', new_part);
 	
-	$('#add-doc').on('click', function(e){
+	$('#submit-box').on('click', function(e){
 		$('#root').submit();
 	});
 	
@@ -46,24 +35,33 @@ $(document).ready(function()
 
 <div id="root-box">
 
-<h1>Disputio</h1>
 
 <form id="root" action="/disputio/add" name="root" method="POST">
-	<div id="input-wrapper"></div>
+	<div id="box-box">
+		<div class="dis-wrap">Dis</div>
+		<div class="dis-wrap">pu</div>
+		<div class="dis-wrap">tio</div>
+		<div id="key-box">
+		</div>
+		<div id="new-key-box">
+		<input id="new-key-input" type="text" /> <span id="new-key-submit">new</span>
+		</div>
+	</div>
+	<div id="edit-wrapper"></div>
+	
+	<div id="edit-box"></div>
+	<div id="submit-box">
+		<div class="submit-letter">P</div>
+		<div class="submit-letter">U</div>
+		<div class="submit-letter">B</div>
+		<div class="submit-letter">L</div>
+		<div class="submit-letter">I</div>
+		<div class="submit-letter">S</div>
+		<div class="submit-letter">H</div>
+		<div class="submit-letter">↪</div>
+
 </form>
 
-<div id="start-doc">
-<p class="button">Start Document.</p>
-</div>
-
-<div id="command-box">
-	<div class="button" id="add-key">
-		<p>Add a field of notes, a way to describe the document, an other way maybe to categorize it.</p>
-	</div>
-	<div class="button" id="add-doc">
-		<p>Add the content of this screen to the disputio.</p>
-	</div>
-</div>
 
 
 <div id="nav-box">
