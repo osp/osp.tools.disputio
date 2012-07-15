@@ -8,8 +8,9 @@ $(document).ready(function()
 	var iw = $('#input-wrapper');
 	var keyCount = 0;
 	
-	$('#add-key').on('click', function(e)
-	{
+	$('#command-box').hide();
+	
+	function new_part(e){
 		var key = $('<input type="text" />')
 		var value = $('<textarea name="xxxx"></textarea>')
 		var box = $('<p></p>')
@@ -20,7 +21,16 @@ $(document).ready(function()
 		box.append(key);
 		box.append(value);
 		iw.append(box);
+	}
+	
+	$('#start-doc').on('click', function(e){
+		var that = $(this);
+		that.hide();
+		$('#command-box').show();
+		new_part();
 	});
+	
+	$('#add-key').on('click', new_part);
 	
 	$('#add-doc').on('click', function(e){
 		$('#root').submit();
@@ -39,21 +49,24 @@ $(document).ready(function()
 <h1>Disputio</h1>
 
 <form id="root" action="/disputio/add" name="root" method="POST">
-
-<div id="input-wrapper">
-
-
-</div>
-<div class="button" id="add-key">
-<p>Ajouter un champ de note, une manière de décrire le document, une autre manière peut-être pour le caractériser.</p>
-<p>Add a field of notes, a way to describe the document, an other way maybe to categorize it.</p>
-</div>
-<div class="button" id="add-doc">
-<p>Ajouter le contenu de cet écran au disputio.</p>
-<p>Add the content of this screen to the disputio.</p>
-</div>
-
+	<div id="input-wrapper"></div>
 </form>
+
+<div id="start-doc">
+	<p>Start Document.</p>
+</div>
+
+<div id="command-box">
+	<div class="button" id="add-key">
+		<p>Ajouter un champ de note, une manière de décrire le document, une autre manière peut-être pour le caractériser.</p>
+		<p>Add a field of notes, a way to describe the document, an other way maybe to categorize it.</p>
+	</div>
+	<div class="button" id="add-doc">
+		<p>Ajouter le contenu de cet écran au disputio.</p>
+		<p>Add the content of this screen to the disputio.</p>
+	</div>
+</div>
+
 
 <div id="nav-box">
 <a>Voir tous les documents</a>
