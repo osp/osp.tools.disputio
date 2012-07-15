@@ -58,10 +58,27 @@ def r_to_doc(r, keys):
 				doc[k] = ''
 	return doc
 	
+	
+def document_sort_date(a,b):
+	da = a.get('_id').generation_time
+	db = b.get('_id').generation_time
+	if da < db:
+		return 1
+	elif db < da:
+		return -1
+	return 0
+	
+	
 @bobo.query('/docs')
 def docs():
 	col = get_collection()
-	res = col.find()
+	res_ = col.find()
+	res = []
+	for r in res_:
+		res.append(r)
+		
+	res.sort(document_sort_date)
+	
 	ids = []
 	for r in res:
 		d = {}
