@@ -1,5 +1,7 @@
 /* javascript */
 
+var d_slider_speed = 360;
+
 $(document).ready(function()
 {
 	$('#submit-box').hide();
@@ -27,17 +29,21 @@ $(document).ready(function()
 	
 	$('#doclist-box').load('/disputio/docs', function(responseText, textStatus, XMLHttpRequest){
 		$('.key-item').on('click', function(e){
-			that = $(this);
-			$('#key-viewer-paper').load(encodeURI(that.attr('title')), function(r,t,x){
-				$('#doclist-box').hide();
-				$('#key-viewer-box').show();
+			var that = $(this);
+			var url = encodeURI(that.attr('title'));
+			$('#key-viewer-paper').load(url, {d:0}, function()
+			{
+				$('#doclist-box').hide('slide',{direction:'left'}, d_slider_speed, function(){
+					$('#key-viewer-box').show('slide',{direction:'right'}, d_slider_speed);
+				});
 			});
 		});
 	});
 	
 	$('#key-viewer-close').on('click', function(e){
-		$('#key-viewer-box').hide();
-		$('#doclist-box').show();
+		$('#key-viewer-box').hide('slide',{direction:'right'}, d_slider_speed, function(){
+			$('#doclist-box').show('slide',{direction:'left'}, d_slider_speed);
+		});
 	});
 	
 	
