@@ -15,7 +15,7 @@ $(document).ready(function()
 		var value = $('<div class="value-box"><textarea class="part-value" name="'+keyval+'"></textarea></div>')
 		
 		$('#new-key-box').append(key);
-		$('#edit-wrapper').append(value);
+		$('#edit-box').append(value);
 	}
 	
 	
@@ -35,10 +35,9 @@ $(document).ready(function()
 
 <div id="root-box">
 
-
 <form id="root" action="/disputio/add" name="root" method="POST">
 	<div id="box-box">
-		<div class="dis-wrap">Dis</div>
+		<div class="dis-wrap dis-wrap-first">Dis</div>
 		<div class="dis-wrap">pu</div>
 		<div class="dis-wrap">tio</div>
 		<div id="key-box">
@@ -47,7 +46,6 @@ $(document).ready(function()
 		<input id="new-key-input" type="text" /> <span id="new-key-submit">new</span>
 		</div>
 	</div>
-	<div id="edit-wrapper"></div>
 	
 	<div id="edit-box"></div>
 	<div id="submit-box">
@@ -59,6 +57,7 @@ $(document).ready(function()
 		<div class="submit-letter">S</div>
 		<div class="submit-letter">H</div>
 		<div class="submit-letter">↪</div>
+	</div>
 
 </form>
 
