@@ -75,16 +75,21 @@ def docs():
 	res_ = col.find()
 	res = []
 	for r in res_:
-		res.append(r)
+		if len(r.keys()) > 1:
+			res.append(r)
 		
 	res.sort(document_sort_date)
 	
 	ids = []
-	for r in res:
+	for r in res[0:24]:
 		d = {}
 		d['id'] = str(r.get('_id'))
 		d['time'] = r.get('_id').generation_time.isoformat()
-		d['keys'] = r.keys()
+		filt_keys = []
+		for k in r.keys():
+			if k != '_id':
+				filt_keys.append(k)
+		d['keys'] = filt_keys
 		ids.append(d)
 		
 	template = template_env.get_template('docs.html')
