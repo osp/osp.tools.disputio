@@ -4,7 +4,7 @@
 	<a href="/disputio/id/{{item['id']}}">{{item['time']}}</a> 
 	<div class="keys">
 	{% for key in item['keys'] %}
-	<a href="/disputio/value_of/{{item['id']}}/{{key}}">{{key}}</a>
+	<span class="key-item" title="/disputio/value_of/{{item['id']}}/{{key}}">{{key}}</span>
 	{% endfor %}
 	</div>
 	</div>
