@@ -42,6 +42,12 @@
 	src: url(../fonts/Sorts_Mill_Goudy/GoudyStM-webfont.ttf);
 }
 
+@font-face {
+	font-family: league_gothic;
+	src: url(../fonts/League_Gothic/League_Gothic-webfont.ttf);
+}
+
+
 body
 {
 	background-color:#ffffff;
@@ -57,14 +63,15 @@ h1
 }
 
 .button {
-	text-decoration:underline;
-	cursor:pointer;
-	margin-bottom:30px;
-	margin-left:30px;
+	cursor: pointer;
+	border: 1px solid #999;
+	border-radius: 6px;
+	padding: 3px;
 }
 
-p.button:hover {
-	text-decoration:overline;
+.button:hover {
+	border: 1px solid #222;
+	background-color:#eee;
 }
 
 
@@ -109,20 +116,36 @@ p.button:hover {
 	border: 1px solid pink;
 }
 
+#new-key-submit{
+	
+}
+
 #edit-box{
-	position:absolute;
-	top:0;
-	left:15%;
-	width:30%;
+	position: absolute;
+	top: 32px;
+	left: 15%;
+	width: 52%;
+}
+
+.value-box{
+	padding:6px;
+}
+
+.part-value{
+	width: 90%;
+	height: 232px;
 }
 
 #submit-box{
-	position:absolute;
-	top:0;
-	left:70%;
-	width:10%;
+	position: absolute;
+	top: 32px;
+	left: 70%;
+	width: 36px;
+	text-align: center;
 }
 
 .submit-letter{
-	
+	font-family: league_gothic;
+	font-size:36pt;
+	line-height:36pt;
 }

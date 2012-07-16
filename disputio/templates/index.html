@@ -34,9 +34,7 @@ $(document).ready(function()
 {% block content %}
 
 <div id="root-box">
-
-<form id="root" action="/disputio/add" name="root" method="POST">
-	<div id="box-box">
+<div id="box-box">
 		<div class="dis-wrap dis-wrap-first">Dis</div>
 		<div class="dis-wrap">pu</div>
 		<div class="dis-wrap">tio</div>
@@ -44,13 +42,15 @@ $(document).ready(function()
 		<div id="key-box">
 		</div>
 		<div id="new-key-box">
-		<div id="new-key-label"></div>
-		<input id="new-key-input" type="text" /> <span id="new-key-submit">⇁</span>
+		<div id="new-key-label">Feed the disputio</div>
+		<input id="new-key-input" type="text" /> <span id="new-key-submit" class="button">⇁</span>
 		</div>
-	</div>
+</div>
 	
+<form id="root" action="/disputio/add" name="root" method="POST">
+
 	<div id="edit-box"></div>
-	<div id="submit-box">
+	<div id="submit-box" class="button">
 		<div class="submit-letter">P</div>
 		<div class="submit-letter">U</div>
 		<div class="submit-letter">B</div>
