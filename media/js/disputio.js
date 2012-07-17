@@ -25,8 +25,8 @@ $(document).ready(function()
 		$('#doclist-box').load('/disputio/docs', function(responseText, textStatus, XMLHttpRequest){
 			$('.key-item').on('click', function(e){
 				var that = $(this);
-				var url = encodeURI(that.attr('title'));
-				$('#key-viewer-paper').load(url, {d:0}, function()
+				var url = '/disputio/value_of';
+				$('#key-viewer-paper').load(url, {oid:that.attr('title'), key:that.text()}, function()
 				{
 					$('#doclist-box').hide('slide',{direction:'left'}, d_slider_speed, function(){
 						$('#key-viewer-box').show('slide',{direction:'right'}, d_slider_speed);

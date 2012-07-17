@@ -94,8 +94,24 @@ def docs():
 	return template.render({'ids':ids})
 
 
-@bobo.query('/value_of/:oid/:key')
-def value_of(oid, key):
+@bobo.query('/value_of')
+def value_of(bobo_request):
+	key = None
+	if 'key' in bobo_request.GET:
+		key = bobo_request.GET['key']
+		
+	if 'key' in bobo_request.POST:
+		key = bobo_request.POST['key']	
+	
+	oid = None
+	if 'oid' in bobo_request.GET:
+		oid = bobo_request.GET['oid']
+		
+	if 'oid' in bobo_request.POST:
+		oid = bobo_request.POST['oid']	
+		
+	if key is None:
+		return 'Cannot find a key in the request'
 	col = get_collection()
 	res = col.find({'_id':objectid.ObjectId(oid)})
 	if res.count() == 0:
