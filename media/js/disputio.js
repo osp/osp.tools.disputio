@@ -15,7 +15,7 @@ $(document).ready(function()
 		var key = $('<div class="part-key">'+keyval+'</div>')
 		var value = $('<div class="value-box"><div class="part-value-label">'+keyval+'</div><textarea class="part-value" name="'+keyval+'"></textarea></div>')
 		
-		$('#new-key-box').append(key);
+// 		$('#new-key-box').append(key);
 		$('#edit-box').append(value);
 		$('#submit-box').show();
 	}

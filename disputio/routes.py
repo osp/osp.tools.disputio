@@ -7,9 +7,6 @@ import re
 
 import pymongo as mongo
 from pymongo import objectid
-
-#repat = re.compile(r'^((?:(?:[^?+*{}()[\]\\|]+|\\.|\[(?:\^?\\.|\^[^\\]|[^\\^])(?:[^\]\\]+|\\.)*\]|\((?:\?[:=!]|\?<[=!]|\?>)?(?1)??\)|\(\?(?:R|[+-]?\d+)\))(?:(?:[?+*]|\{\d+(?:,\d*)?\})[?+]?)?|\|)*)$')
-
     
     
 template_env = jinja2.Environment(loader=jinja2.PackageLoader('disputio', 'templates'))
@@ -22,6 +19,7 @@ def get_collection(name = None):
 	db = cn.RCE
 	col = db[name]
 	return col
+	
 
 @bobo.query('')
 def base(bobo_request):
