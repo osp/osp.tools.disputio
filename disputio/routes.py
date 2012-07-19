@@ -41,7 +41,7 @@ def add(bobo_request):
 	
 	col = get_collection()
 	col.insert(doc)
-	return bobo.redirect('/disputio')
+	return bobo.redirect('/')
 	
 	
 def r_to_doc(r, keys):
