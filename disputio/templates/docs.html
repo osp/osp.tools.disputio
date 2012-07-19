@@ -1,7 +1,7 @@
 
 {% for item in ids %}
 	<div class="id-box">
-<!-- 	<a href="/disputio/id/{{item['id']}}">{{item['time']}}</a>  -->
+	<div class="doc-title-id">{{item['title']}}</div>
 	<span>{{item['time']}}</span>
 	<div class="keys">
 	{% for key in item['keys'] %}

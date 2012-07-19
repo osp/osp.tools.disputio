@@ -88,6 +88,8 @@ def docs():
 			if k != '_id':
 				filt_keys.append(k)
 		d['keys'] = filt_keys
+		if r.has_key('title'):
+			d['title'] = r['title']
 		ids.append(d)
 		
 	template = template_env.get_template('docs.html')

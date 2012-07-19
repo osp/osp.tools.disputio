@@ -36,6 +36,34 @@ $(document).ready(function()
 		});
 	}
 	
+// 	function relate_to(event)
+// 	{
+// 		var e = event;
+// // 		var that = $(this);
+// 		var id = e.data.start_point;
+// 		var rel = {
+// 			relation : 'internal',
+// 			start_point: '/id/' + id,
+// 			end_point: e.data.end_point.val(),
+// 			note: e.data.note.val()
+// 		};
+// 		$.post('/disputio/add', rel, function(){
+// 			e.data.result.text(e.data.end_point.val());
+// 		});
+// 		
+// 	}
+// 	
+// 	function relate_to_form(event)
+// 	{
+// 		var e = event;
+// 		var f = $('<div class="pop-form"></div>');
+// 		var dp = $('<input class="big-input" type="text" />');
+// 		var n = $('<textarea class="tiny-textarea" />');
+// 		
+// 		var s = $('<div class="button submit-rel">commit</>');
+// 		
+// 	}
+	
 	setInterval(load_docs, 20000);
 	
 	$('#new-key-submit').on('click', new_part);
