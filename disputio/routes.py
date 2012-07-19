@@ -6,7 +6,7 @@ import jinja2
 import re
 
 import pymongo as mongo
-from pymongo import objectid
+from bson import objectid
     
     
 template_env = jinja2.Environment(loader=jinja2.PackageLoader('disputio', 'templates'))
