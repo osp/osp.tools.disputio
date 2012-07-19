@@ -22,10 +22,10 @@ $(document).ready(function()
 	
 	function load_docs()
 	{
-		$('#doclist-box').load('/disputio/docs', function(responseText, textStatus, XMLHttpRequest){
+		$('#doclist-box').load('/docs', function(responseText, textStatus, XMLHttpRequest){
 			$('.key-item').on('click', function(e){
 				var that = $(this);
-				var url = '/disputio/value_of';
+				var url = '/value_of';
 				$('#key-viewer-paper').load(url, {oid:that.attr('title'), key:that.text()}, function()
 				{
 					$('#doclist-box').hide('slide',{direction:'left'}, d_slider_speed, function(){
