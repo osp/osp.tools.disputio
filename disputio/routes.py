@@ -6,7 +6,7 @@ import jinja2
 import re
 
 import pymongo as mongo
-from pymongo import objectid
+from bson import objectid
     
     
 template_env = jinja2.Environment(loader=jinja2.PackageLoader('disputio', 'templates'))
@@ -41,7 +41,7 @@ def add(bobo_request):
 	
 	col = get_collection()
 	col.insert(doc)
-	return bobo.redirect('/disputio')
+	return bobo.redirect('/')
 	
 	
 def r_to_doc(r, keys):
@@ -88,6 +88,8 @@ def docs():
 			if k != '_id':
 				filt_keys.append(k)
 		d['keys'] = filt_keys
+		if r.has_key('title'):
+			d['title'] = r['title']
 		ids.append(d)
 		
 	template = template_env.get_template('docs.html')

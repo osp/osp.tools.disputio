@@ -22,10 +22,10 @@ $(document).ready(function()
 	
 	function load_docs()
 	{
-		$('#doclist-box').load('/disputio/docs', function(responseText, textStatus, XMLHttpRequest){
+		$('#doclist-box').load('/docs', function(responseText, textStatus, XMLHttpRequest){
 			$('.key-item').on('click', function(e){
 				var that = $(this);
-				var url = '/disputio/value_of';
+				var url = '/value_of';
 				$('#key-viewer-paper').load(url, {oid:that.attr('title'), key:that.text()}, function()
 				{
 					$('#doclist-box').hide('slide',{direction:'left'}, d_slider_speed, function(){
@@ -35,6 +35,34 @@ $(document).ready(function()
 			});
 		});
 	}
+	
+// 	function relate_to(event)
+// 	{
+// 		var e = event;
+// // 		var that = $(this);
+// 		var id = e.data.start_point;
+// 		var rel = {
+// 			relation : 'internal',
+// 			start_point: '/id/' + id,
+// 			end_point: e.data.end_point.val(),
+// 			note: e.data.note.val()
+// 		};
+// 		$.post('/disputio/add', rel, function(){
+// 			e.data.result.text(e.data.end_point.val());
+// 		});
+// 		
+// 	}
+// 	
+// 	function relate_to_form(event)
+// 	{
+// 		var e = event;
+// 		var f = $('<div class="pop-form"></div>');
+// 		var dp = $('<input class="big-input" type="text" />');
+// 		var n = $('<textarea class="tiny-textarea" />');
+// 		
+// 		var s = $('<div class="button submit-rel">commit</>');
+// 		
+// 	}
 	
 	setInterval(load_docs, 20000);
 	
